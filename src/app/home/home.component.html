@@ -1,8 +1,41 @@
 <div class="home-component">
-	<div class="home-content">
-		<div class="section-container">
-			<h3 class="section-title">Popular</h3>
-			<div class="movie-list"></div>
+	<div class="search-bar-container">
+    <input type="text" class="search-bar" placeholder="Search for movies...">
+  </div>
+
+	<div class="section-container">
+		<h3 class="section-title">Popular</h3>
+		<div class="carrossel-chevron left">
+			<ng-icon name="bootstrapChevronLeft" size="32"></ng-icon>
+		</div>
+		<div class="carrossel-chevron right">
+			<ng-icon name="bootstrapChevronRight" size="32"></ng-icon>
+		</div>
+		<div class="movie-list">
+			<div class="movie-card" *ngFor="let movie of movies">
+				<div class="movie-thumbnail" [ngStyle]="{ 'background-image': 'url(' + getMoviePosterUrl(movie.poster_path) + ')' }"></div>
+				<div class="movie-info">
+					<h4 title="{{ movie.title }}">{{ movie.title }}</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section-container" *ngFor="let genre of genres">
+		<h3 class="section-title">{{ genre.name }}</h3>
+		<div class="carrossel-chevron left">
+			<ng-icon name="bootstrapChevronLeft" size="32"></ng-icon>
+		</div>
+		<div class="carrossel-chevron right">
+			<ng-icon name="bootstrapChevronRight" size="32"></ng-icon>
+		</div>
+		<div class="movie-list">
+			<div class="movie-card" *ngFor="let movie of genre.movies">
+				<div class="movie-thumbnail" [ngStyle]="{ 'background-image': 'url(' + getMoviePosterUrl(movie.poster_path) + ')' }"></div>
+				<div class="movie-info">
+					<h4 title="{{ movie.title }}">{{ movie.title }}</h4>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
