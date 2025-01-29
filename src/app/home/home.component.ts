@@ -2,11 +2,14 @@ import { NgFor, NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { MovieService } from '../services/movie.service';
+import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { GenreFilterComponent } from '../genre-filter/genre-filter.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIcon, NgStyle],
+  imports: [NgFor, NgIcon, NgStyle, MovieCardComponent, SearchBarComponent, GenreFilterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -40,22 +43,5 @@ export class HomeComponent implements OnInit {
 
   successGetMovieGenres (response: any) : void {
     this.genres = response.genres
-    this.genres.forEach(genre => this.getMoviesByGenre(genre))
-  }
-
-  getMoviesByGenre (genre: any) : void {
-    this.movieService.getMoviesByGenre(genre.id, 1)
-      .then(response => response.json())
-      .then(response => this.successGetMoviesByGenre(response, genre))
-      .catch(err => console.error(err))
-  }
-
-  successGetMoviesByGenre (response: any, genre: any) : void {
-    console.log(response)
-    genre.movies = response.results
-  }
-
-  getMoviePosterUrl (posterPath: string) {
-    return 'https://image.tmdb.org/t/p/w220_and_h330_face/' + posterPath
   }
 }

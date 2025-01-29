@@ -1,0 +1,7 @@
+<div class="genre-component">
+	<app-genre-filter [genres]="genreList"></app-genre-filter>
+	<div class="movie-list">
+		<app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+	</div>
+	<app-pagination-nav [totalPages]="moviePages" *ngIf="!loading"></app-pagination-nav>
+</div>

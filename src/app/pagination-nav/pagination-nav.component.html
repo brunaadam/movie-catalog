@@ -1,0 +1,8 @@
+<div class="pagination-nav">
+	{{currentPage}}
+	<ng-icon name="bootstrapChevronLeft" size="16"></ng-icon>
+	<div class="pagination-item" *ngFor="let pageIndex of pageIndexes">
+		{{ pageIndex }}
+	</div>
+	<ng-icon name="bootstrapChevronRight" size="16"></ng-icon>
+</div>

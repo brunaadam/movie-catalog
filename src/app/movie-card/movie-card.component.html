@@ -1,0 +1,6 @@
+<div class="movie-card">
+	<div class="movie-thumbnail" [ngStyle]="{ 'background-image': 'url(' + getMoviePosterUrl(movie.poster_path) + ')' }"></div>
+	<div class="movie-info">
+		<h4 title="{{ movie.title }}">{{ movie.title }}</h4>
+	</div>
+</div>

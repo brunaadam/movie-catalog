@@ -34,7 +34,7 @@ export class MovieService {
     return fetch(url, options)
   }
 
-  getMoviesByGenre(genreId: number, page: number) {
+  getMoviesByGenre(page: number, genreId?: number) {
     const options = {
       method: 'GET',
       headers: {
@@ -43,7 +43,30 @@ export class MovieService {
       }
     };
 
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genreId}`
+    let url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`
+
+    if (genreId) {
+      url += `&with_genres=${genreId}`
+    }
+
+    return fetch(url, options)
+  }
+
+
+  getMoviesByTitle(page: number, title: string) {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MzI0NzBmMTA2YWE5MjdlNmYwYzQwMWY0NWE1YjJmOCIsIm5iZiI6MTcyNzk3ODQxMy4wMzk1MDEsInN1YiI6IjY2ZmVkYTI3OTI1ZmRmOTI1YjdjOWRhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z2EelH6htWb75DTEbgrNVklpvHx-jwvXu0wX_iFa1eI'
+      }
+    };
+
+    let url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=${page}`
+
+    if (title) {
+      url += `&query=${title}`
+    }
 
     return fetch(url, options)
   }

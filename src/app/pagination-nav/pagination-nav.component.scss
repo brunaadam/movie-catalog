@@ -1,0 +1,27 @@
+.pagination-nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	padding: 12px;
+
+	.pagination-item {
+		cursor: pointer;
+		padding: 4px;
+		background-color: #1c1c1c;
+		border-radius: 8px;
+		display: flex;
+    align-items: center;
+    justify-content: center;
+		height: 30px;
+    width: 30px;
+
+		&:hover {
+			background-color: #252525;
+		}
+	}
+
+	ng-icon {
+		cursor: pointer;
+	}
+}

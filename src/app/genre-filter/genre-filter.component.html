@@ -1,0 +1,6 @@
+<h2 class="genre-filter-title">Discover movies by genre</h2>
+<div class="genre-filter-container">
+	<div class="genre-filter-item" *ngFor="let genre of genres" (click)="goToGenrePage(genre.name)">
+		<label>{{ genre.name }}</label>
+	</div>
+</div>

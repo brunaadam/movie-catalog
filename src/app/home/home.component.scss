@@ -1,26 +1,4 @@
 .home-component {
-	.search-bar-container {
-		width: 100%;
-		margin: 0 0 20px;
-		text-align: center;
-
-		.search-bar {
-      width: 100%;
-      padding: 16px 20px;
-      font-size: 18px;
-      border: none;
-      background-color: #fff;
-      color: #000;
-			transition: all 0.4s;
-
-			&:focus-visible {
-				outline: none;
-				font-size: 22px;
-				padding: 20px;
-			}
-    }
-	}
-
 	.section-container {
 		padding: 0 24px;
 
@@ -50,39 +28,6 @@
 			display: flex;
 			gap: 10px;
 			overflow-x: auto;
-
-			.movie-card {
-				height: 300px;
-				width: 200px;
-				min-width: 200px;
-				background-color: #1c1c1c;
-				border-radius: 8px;
-				padding: 12px 4px 4px;
-				cursor: pointer;
-				transition: all 0.1s;
-
-				&:hover {
-					box-shadow: rgba(0, 0, 0, 0.40) 0px 16px 48px;
-				}
-
-				.movie-thumbnail {
-					height: 250px;
-					background-position: center;
-					background-size: contain;
-					background-repeat: no-repeat;
-				}
-
-				.movie-info {
-					padding: 0 6px;
-
-					h4 {
-						text-overflow: ellipsis;
-						overflow: hidden;
-						white-space: nowrap;
-						font-weight: 400;
-					}
-				}
-			}
 
 			&::-webkit-scrollbar {
 				display: none;

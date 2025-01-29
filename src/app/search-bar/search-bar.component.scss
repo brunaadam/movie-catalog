@@ -1,0 +1,21 @@
+.search-bar-container {
+	width: 100%;
+	margin: 0 0 20px;
+	text-align: center;
+
+	.search-bar {
+		width: 100%;
+		padding: 16px 20px;
+		font-size: 18px;
+		border: none;
+		background-color: #fff;
+		color: #000;
+		transition: all 0.4s;
+
+		&:focus-visible {
+			outline: none;
+			font-size: 22px;
+			padding: 20px;
+		}
+	}
+}

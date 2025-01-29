@@ -1,0 +1,9 @@
+.search-component {
+	.movie-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		gap: 18px;
+		padding: 8px 0;
+	}
+}

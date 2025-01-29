@@ -1,0 +1,33 @@
+.movie-card {
+	height: 300px;
+	width: 200px;
+	min-width: 200px;
+	background-color: #1c1c1c;
+	border-radius: 8px;
+	padding: 12px 4px 4px;
+	cursor: pointer;
+	transition: all 0.1s;
+
+	&:hover {
+		box-shadow: rgba(0, 0, 0, 0.40) 0px 16px 48px;
+		background-color: #1e1d1d;
+	}
+
+	.movie-thumbnail {
+		height: 250px;
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	.movie-info {
+		padding: 0 6px;
+
+		h4 {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			font-weight: 400;
+		}
+	}
+}
