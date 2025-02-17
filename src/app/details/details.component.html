@@ -1,0 +1,33 @@
+<div class="details-page">
+	<div class="movie-info">
+		<div class="movie-poster" [ngStyle]="{ 'background-image': 'url(' + getMoviePosterUrl(movie.poster_path) + ')' }"></div>
+		<div class="movie-texts">
+			<h1 class="movie-title">{{ movie.title }}</h1>
+			<div class="movie-year-runtime">
+				<label>{{ getReleaseYear(movie.release_date) }}</label>
+				<div class="runtime">
+					<ng-icon name="bootstrapClock" size="16"></ng-icon>
+					<label>{{ movie.runtime }} min</label>
+				</div>
+			</div>
+			<div class="movie-rating">
+				<ng-icon name="{{ getRatingStar(movie.vote_average) }}" size="24"></ng-icon>
+				<h3>{{ getRating(movie.vote_average) }}%</h3>
+			</div>
+			<label class="synopsis-title">Synopsis</label>
+			<p>{{ movie.overview }}</p>
+		</div>
+	</div>
+	<div class="cast-info">
+		<h2 class="cast-title">Movie cast</h2>
+		<div class="cast-list">
+			<div class="cast-member-item" *ngFor="let person of cast">
+				<div class="cast-profile-picture" [ngStyle]="{ 'background-image': 'url(' + getMoviePosterUrl(person.profile_path) + ')' }"></div>
+				<div class="texts">
+					<div class="cast-name">{{ person.name }}</div>
+					<div class="cast-character">{{ person.character }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

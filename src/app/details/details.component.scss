@@ -1,0 +1,83 @@
+.details-page {
+	padding: 24px;
+
+	.movie-info {
+		display: grid;
+		grid-template-columns: 220px 1fr;
+		gap: 24px;
+
+		.movie-poster {
+			height: 300px;
+			width: 220px;
+			border-radius: 8px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.movie-texts {
+			.movie-title {
+				margin: 0 0 12px;
+			}
+
+			.movie-year-runtime {
+				display: flex;
+				gap: 16px;
+
+				.runtime {
+					display: flex;
+					gap: 8px;
+					align-items: center;
+				}
+			}
+
+			.movie-rating {
+				display: flex;
+				gap: 8px;
+				align-items: center;
+				margin-bottom: 24px;
+			}
+
+			.synopsis-title {
+				font-weight: 600;
+			}
+		}
+	}
+
+	.cast-info {
+		padding: 12px 0;
+
+		.cast-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 24px;
+
+			.cast-member-item {
+				width: 130px;
+				border-radius: 8px;
+				box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 48px;
+
+				.cast-profile-picture {
+					height: 170px;
+					width: 130px;
+					background-size: cover;
+					border-radius: 8px;
+				}
+
+				.texts {
+					padding: 12px 8px;
+
+					.cast-name {
+						font-weight: 600;
+					}
+
+					.cast-character {
+						font-weight: 400;
+						font-size: 14px;
+						padding-top: 4px;
+					}
+				}
+			}
+		}
+	}
+}

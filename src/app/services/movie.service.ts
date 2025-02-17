@@ -70,4 +70,30 @@ export class MovieService {
 
     return fetch(url, options)
   }
+
+  getMovieDetailsById(movieId: number) {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MzI0NzBmMTA2YWE5MjdlNmYwYzQwMWY0NWE1YjJmOCIsIm5iZiI6MTcyNzk3ODQxMy4wMzk1MDEsInN1YiI6IjY2ZmVkYTI3OTI1ZmRmOTI1YjdjOWRhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z2EelH6htWb75DTEbgrNVklpvHx-jwvXu0wX_iFa1eI'
+      }
+    };
+
+    let url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`
+    return fetch(url, options)
+  }
+
+  getMovieCreditsById(movieId: number) {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MzI0NzBmMTA2YWE5MjdlNmYwYzQwMWY0NWE1YjJmOCIsIm5iZiI6MTcyNzk3ODQxMy4wMzk1MDEsInN1YiI6IjY2ZmVkYTI3OTI1ZmRmOTI1YjdjOWRhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z2EelH6htWb75DTEbgrNVklpvHx-jwvXu0wX_iFa1eI'
+      }
+    };
+
+    let url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`
+    return fetch(url, options)
+  }
 }
