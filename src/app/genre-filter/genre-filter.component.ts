@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Genre } from '../shared/models/Genre';
 @Component({
   selector: 'app-genre-filter',
   standalone: true,
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './genre-filter.component.scss'
 })
 export class GenreFilterComponent {
-  @Input() genres!: any
+  @Input() genres!: Genre[]
   
   constructor(private router: Router) {}
 

@@ -5,6 +5,12 @@ import { NgFor, NgStyle, NgIf } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
 import { LoaderComponent } from '../loader/loader.component';
 import { MovieDetails } from '../shared/models/MovieDetails';
+import { Cast } from '../shared/models/Cast';
+
+interface MovieCreditsResponse {
+  cast: Cast[];
+  crew: any[];
+}
 
 @Component({
   selector: 'app-details',
@@ -16,7 +22,7 @@ import { MovieDetails } from '../shared/models/MovieDetails';
 export class DetailsComponent {
   movieId: string = ''
   movie: MovieDetails = {} as MovieDetails
-  cast: any[] = []
+  cast: Cast[] = []
   loading: boolean = true
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) {}
@@ -27,47 +33,47 @@ export class DetailsComponent {
       this.getMovieCredits()
     }
 
-    getMovieDetails() {
+    getMovieDetails(): void {
       this.movieService.getMovieDetailsById(parseInt(this.movieId))
         .then(response => response.json())
-        .then(response => this.successGetMovieDetails(response))
+        .then((response: MovieDetails) => this.successGetMovieDetails(response))
         .catch(err => console.error(err))
     }
 
-    getMovieCredits() {
+    getMovieCredits(): void {
       this.movieService.getMovieCreditsById(parseInt(this.movieId))
         .then(response => response.json())
-        .then(response => this.successGetMovieCredits(response))
+        .then((response: MovieCreditsResponse) => this.successGetMovieCredits(response))
         .catch(err => console.error(err))
     }
 
-    successGetMovieDetails(details: any) {
+    successGetMovieDetails(details: MovieDetails): void {
       this.movie = details
       if (this.cast.length > 0) {
         this.loading = false
       }
     }
 
-    successGetMovieCredits(credits: any) {
+    successGetMovieCredits(credits: MovieCreditsResponse): void {
       this.cast = credits.cast
       if (Object.keys(this.movie).length > 0) {
         this.loading = false
       }
     }
     
-    getMoviePosterUrl (posterPath: string) {
+    getMoviePosterUrl (posterPath: string): string {
       return 'https://image.tmdb.org/t/p/w220_and_h330_face/' + posterPath
     }
 
-    getReleaseYear (date: string) {
+    getReleaseYear (date: string): string {
       return date.split('-')[0]
     }
 
-    getRating (voteAverage: number) {
+    getRating (voteAverage: number): string {
       return voteAverage.toFixed(1)
     }
 
-    getRatingStar (voteAverage: number) {
+    getRatingStar (voteAverage: number): string {
       let star = 'bootstrapStarFill'
       if (voteAverage < 8 && voteAverage >= 6) {
         star = 'bootstrapStarHalf'

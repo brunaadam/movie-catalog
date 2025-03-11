@@ -8,6 +8,17 @@ import { GenreFilterComponent } from '../genre-filter/genre-filter.component';
 import { Subscription } from 'rxjs';
 import { LoaderComponent } from '../loader/loader.component';
 import { Movie } from '../shared/models/Movie';
+import { Genre } from '../shared/models/Genre';
+
+interface MoviesByGenreResponse {
+  results: Movie[];
+  total_pages: number;
+}
+
+interface GenreResponse {
+  genres: Genre[];
+}
+
 @Component({
   selector: 'app-genre',
   standalone: true,
@@ -20,7 +31,7 @@ export class GenreComponent implements OnInit, OnDestroy {
   currentPage: number = 1
   genreName: string = ""
   genreId: number = -1
-  genreList: any[] = []
+  genreList: Genre[] = []
   moviePages: number = 1
   loading: boolean = true
   private routeSubscription!: Subscription
@@ -47,7 +58,7 @@ export class GenreComponent implements OnInit, OnDestroy {
   }
 
   updateGenreAndMovies(): void {
-    const genre: any = this.genreList.find(item => item.name.toLowerCase() === this.genreName)
+    const genre: Genre | undefined = this.genreList.find(item => item.name.toLowerCase() === this.genreName)
     
     if (genre) {
       this.genreId = genre.id
@@ -58,11 +69,11 @@ export class GenreComponent implements OnInit, OnDestroy {
   getMovieGenres () : void {
     this.movieService.getMovieGenres()
       .then(response => response.json())
-      .then(response => this.successGetMovieGenres(response))
+      .then((response: GenreResponse) => this.successGetMovieGenres(response))
       .catch(err => console.error(err))
   }
 
-  successGetMovieGenres (response: any) : void {
+  successGetMovieGenres (response: GenreResponse) : void {
     this.genreList = response.genres
     this.updateGenreAndMovies()
   }
@@ -70,11 +81,11 @@ export class GenreComponent implements OnInit, OnDestroy {
   getMoviesByGenre(page: number) : void {
     this.movieService.getMoviesByGenre(page, this.genreId)
       .then(response => response.json())
-      .then(response => this.successGetMovies(response))
+      .then((response: MoviesByGenreResponse) => this.successGetMovies(response))
       .catch(err => console.error(err))
   }
 
-  successGetMovies(response: any) : void {
+  successGetMovies(response: MoviesByGenreResponse) : void {
     this.movies = response.results
     this.moviePages = response.total_pages
     this.loading = false

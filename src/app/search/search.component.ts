@@ -6,6 +6,12 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MovieService } from '../services/movie.service';
 import { PaginationNavComponent } from '../pagination-nav/pagination-nav.component';
 import { LoaderComponent } from '../loader/loader.component';
+import { Movie } from '../shared/models/Movie';
+
+interface MovieSearchResponse {
+  results: Movie[];
+  total_pages: number;
+}
 
 @Component({
   selector: 'app-search',
@@ -15,7 +21,7 @@ import { LoaderComponent } from '../loader/loader.component';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-  movies: any[] = []
+  movies: Movie[] = []
   searchTerm: string = ""
   moviePages: number = 1
   loading: boolean = true
@@ -32,11 +38,11 @@ export class SearchComponent {
   getMoviesByTitle(page: number) : void {
     this.movieService.getMoviesByTitle(page, this.searchTerm)
       .then(response => response.json())
-      .then(response => this.successGetMovies(response))
+      .then((response: MovieSearchResponse) => this.successGetMovies(response))
       .catch(err => console.error(err))
   }
 
-  successGetMovies(response: any) : void {
+  successGetMovies(response: MovieSearchResponse) : void {
     this.movies = response.results
     this.moviePages = response.total_pages
     this.loading = false

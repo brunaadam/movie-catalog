@@ -6,6 +6,16 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { GenreFilterComponent } from '../genre-filter/genre-filter.component';
 import { Movie } from '../shared/models/Movie';
+import { Genre } from '../shared/models/Genre';
+
+interface MovieResponse {
+  results: Movie[];
+  total_pages: number;
+}
+
+interface GenreResponse {
+  genres: Genre[];
+}
 
 @Component({
   selector: 'app-home',
@@ -17,40 +27,41 @@ import { Movie } from '../shared/models/Movie';
 export class HomeComponent implements OnInit {
   @ViewChild('movieList') movieList!: ElementRef;
   
-  movies:Movie[] = []
-  genres:any[] = []
+  movies: Movie[] = [];
+  genres: Genre[] = [];
+  
   constructor(private movieService: MovieService) {}
 
-  ngOnInit() : void {
-    this.getPopularMovies()
-    this.getMovieGenres()
+  ngOnInit(): void {
+    this.getPopularMovies();
+    this.getMovieGenres();
   }
 
-  getPopularMovies () : void {
+  getPopularMovies(): void {
     this.movieService.getPopularMovies(1)
       .then(response => response.json())
-      .then(response => this.successGetPopularMovies(response))
-      .catch(err => console.error(err))
+      .then((response: MovieResponse) => this.successGetPopularMovies(response))
+      .catch(err => console.error(err));
   }
 
-  getMovieGenres () : void {
+  getMovieGenres(): void {
     this.movieService.getMovieGenres()
       .then(response => response.json())
-      .then(response => this.successGetMovieGenres(response))
-      .catch(err => console.error(err))
+      .then((response: GenreResponse) => this.successGetMovieGenres(response))
+      .catch(err => console.error(err));
   }
 
-  successGetPopularMovies (response: any) : void { // adicionar tipo
-    this.movies = response.results
+  successGetPopularMovies(response: MovieResponse): void {
+    this.movies = response.results;
   }
 
-  successGetMovieGenres (response: any) : void {
-    this.genres = response.genres
+  successGetMovieGenres(response: GenreResponse): void {
+    this.genres = response.genres;
   }
 
   scrollMovieList(direction: 'left' | 'right'): void {
     const container = this.movieList.nativeElement;
-    const scrollAmount = container.clientWidth * 0.8; // Scroll 80% da largura visível
+    const scrollAmount = container.clientWidth * 0.8;
     
     if (direction === 'left') {
       container.scrollBy({

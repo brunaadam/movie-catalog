@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { Movie } from '../shared/models/Movie';
 @Component({
   selector: 'app-movie-card',
   standalone: true,
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './movie-card.component.scss'
 })
 export class MovieCardComponent {
-  @Input() movie!: any
+  @Input() movie!: Movie
 
    constructor(private router: Router) {}
 
