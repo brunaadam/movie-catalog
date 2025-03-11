@@ -1,7 +1,15 @@
 <div class="genre-component">
 	<app-genre-filter [genres]="genreList"></app-genre-filter>
 	<div class="movie-list">
-		<app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+		<app-loader *ngIf="loading"></app-loader>
+		<ng-container *ngIf="!loading">
+			<app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+		</ng-container>
 	</div>
-	<app-pagination-nav [totalPages]="moviePages" *ngIf="!loading"></app-pagination-nav>
+	<app-pagination-nav 
+		[totalPages]="moviePages" 
+		[currentPage]="currentPage"
+		(pageChange)="onPageChange($event)"
+		*ngIf="!loading"
+	></app-pagination-nav>
 </div>

@@ -1,21 +1,25 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MovieService } from '../services/movie.service';
 import { PaginationNavComponent } from '../pagination-nav/pagination-nav.component';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [NgFor, SearchBarComponent, MovieCardComponent, PaginationNavComponent],
+  imports: [NgFor, SearchBarComponent, MovieCardComponent, PaginationNavComponent, NgIf, LoaderComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
   movies: any[] = []
   searchTerm: string = ""
+  moviePages: number = 1
+  loading: boolean = true
+  currentPage: number = 1
   constructor(private movieService: MovieService, private route: ActivatedRoute) {}
 
   ngOnInit() : void {
@@ -34,5 +38,14 @@ export class SearchComponent {
 
   successGetMovies(response: any) : void {
     this.movies = response.results
+    this.moviePages = response.total_pages
+    this.loading = false
+  }
+
+  onPageChange(page: number): void {
+    this.loading = true;
+    this.currentPage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.getMoviesByTitle(page);
   }
 }

@@ -3,13 +3,13 @@
 
 	<div class="section-container">
 		<h3 class="section-title">Popular</h3>
-		<div class="carrossel-chevron left">
+		<div class="carrossel-chevron left" (click)="scrollMovieList('left')">
 			<ng-icon name="bootstrapChevronLeft" size="32"></ng-icon>
 		</div>
-		<div class="carrossel-chevron right">
+		<div class="carrossel-chevron right" (click)="scrollMovieList('right')">
 			<ng-icon name="bootstrapChevronRight" size="32"></ng-icon>
 		</div>
-		<div class="movie-list">
+		<div class="movie-list" #movieList>
 			<app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
 		</div>
 	</div>

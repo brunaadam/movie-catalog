@@ -1,8 +1,24 @@
 <div class="pagination-nav">
-	{{currentPage}}
-	<ng-icon name="bootstrapChevronLeft" size="16"></ng-icon>
-	<div class="pagination-item" *ngFor="let pageIndex of pageIndexes">
+	<ng-icon 
+		name="bootstrapChevronLeft" 
+		size="16" 
+		(click)="navigatePages('left')"
+		[class.disabled]="!canNavigateLeft()"
+	></ng-icon>
+
+	<div 
+		class="pagination-item" 
+		*ngFor="let pageIndex of pageIndexes"
+		[class.active]="pageIndex === currentPage"
+		(click)="selectPage(pageIndex)"
+	>
 		{{ pageIndex }}
 	</div>
-	<ng-icon name="bootstrapChevronRight" size="16"></ng-icon>
+
+	<ng-icon 
+		name="bootstrapChevronRight" 
+		size="16" 
+		(click)="navigatePages('right')"
+		[class.disabled]="!canNavigateRight()"
+	></ng-icon>
 </div>

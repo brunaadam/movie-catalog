@@ -1,6 +1,7 @@
 .home-component {
 	.section-container {
 		padding: 0 24px;
+		position: relative;
 
 		.carrossel-chevron {
 			position: absolute;
@@ -10,17 +11,22 @@
 			cursor: pointer;
 			transition: all 0.4s;
 			padding: 0 4px;
+			z-index: 1;
 
 			&.right {
 				right: 24px;
 
 				&:hover {
-					background: linear-gradient(270deg, black, transparent);
+					background: linear-gradient(270deg, rgba(0,0,0,0.8), transparent);
 				}
 			}
 
-			&.left:hover {
-				background: linear-gradient(90deg, black, transparent);
+			&.left {
+				left: 24px;
+
+				&:hover {
+					background: linear-gradient(90deg, rgba(0,0,0,0.8), transparent);
+				}
 			}
 		}
 
@@ -28,6 +34,9 @@
 			display: flex;
 			gap: 10px;
 			overflow-x: auto;
+			scroll-behavior: smooth;
+			-ms-overflow-style: none;
+			scrollbar-width: none;
 
 			&::-webkit-scrollbar {
 				display: none;

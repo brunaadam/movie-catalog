@@ -11,17 +11,33 @@
 		background-color: #1c1c1c;
 		border-radius: 8px;
 		display: flex;
-    align-items: center;
-    justify-content: center;
+		align-items: center;
+		justify-content: center;
 		height: 30px;
-    width: 30px;
+		width: 30px;
+		transition: all 0.3s ease;
 
 		&:hover {
 			background-color: #252525;
+		}
+
+		&.active {
+			background-color: #192247;
+			color: white;
 		}
 	}
 
 	ng-icon {
 		cursor: pointer;
+		transition: opacity 0.3s ease;
+
+		&.disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+
+		&:not(.disabled):hover {
+			opacity: 0.8;
+		}
 	}
 }

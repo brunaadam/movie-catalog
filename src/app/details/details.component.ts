@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgFor, NgStyle } from '@angular/common';
+import { NgFor, NgStyle, NgIf } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
+import { LoaderComponent } from '../loader/loader.component';
+import { MovieDetails } from '../shared/models/MovieDetails';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [NgStyle, NgIcon, NgFor],
+  imports: [NgStyle, NgIcon, NgFor, NgIf, LoaderComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent {
   movieId: string = ''
-  movie: any = {}
+  movie: MovieDetails = {} as MovieDetails
   cast: any[] = []
+  loading: boolean = true
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) {}
   
@@ -39,13 +42,17 @@ export class DetailsComponent {
     }
 
     successGetMovieDetails(details: any) {
-      console.log(details)
       this.movie = details
+      if (this.cast.length > 0) {
+        this.loading = false
+      }
     }
 
     successGetMovieCredits(credits: any) {
       this.cast = credits.cast
-      console.log(credits)
+      if (Object.keys(this.movie).length > 0) {
+        this.loading = false
+      }
     }
     
     getMoviePosterUrl (posterPath: string) {
