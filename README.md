@@ -4,6 +4,12 @@ This project is a movie catalog application built with Angular. It allows users 
 
 It uses the TMDb API to fetch data about movies, genres, and credits. You can find the API documentation [here](https://developer.themoviedb.org/reference/intro/getting-started).
 
+## Installation
+
+Run `npm install -g @angular/cli` to install the Angular CLI.
+
+Run `npm install` to install the dependencies.
+
 ## Development server
 
 Run `ng serve` to run the application.

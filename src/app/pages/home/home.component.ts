@@ -1,12 +1,12 @@
 import { NgFor, NgStyle } from '@angular/common';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
-import { MovieService } from '../services/movie.service';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { GenreFilterComponent } from '../genre-filter/genre-filter.component';
-import { Movie } from '../shared/models/Movie';
-import { Genre } from '../shared/models/Genre';
+import { MovieService } from '../../services/movie.service';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { GenreFilterComponent } from '../../components/genre-filter/genre-filter.component';
+import { Movie } from '../../shared/models/Movie';
+import { Genre } from '../../shared/models/Genre';
 
 interface MovieResponse {
   results: Movie[];

@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { PaginationNavComponent } from '../pagination-nav/pagination-nav.component';
-import { MovieService } from '../services/movie.service';
-import { GenreFilterComponent } from '../genre-filter/genre-filter.component';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { PaginationNavComponent } from '../../components/pagination-nav/pagination-nav.component';
+import { MovieService } from '../../services/movie.service';
+import { GenreFilterComponent } from '../../components/genre-filter/genre-filter.component';
 import { Subscription } from 'rxjs';
-import { LoaderComponent } from '../loader/loader.component';
-import { Movie } from '../shared/models/Movie';
-import { Genre } from '../shared/models/Genre';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { Movie } from '../../shared/models/Movie';
+import { Genre } from '../../shared/models/Genre';
 
 interface MoviesByGenreResponse {
   results: Movie[];

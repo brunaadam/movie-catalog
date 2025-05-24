@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { MovieService } from '../services/movie.service';
+import { MovieService } from '../../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgFor, NgStyle, NgIf } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
-import { LoaderComponent } from '../loader/loader.component';
-import { MovieDetails } from '../shared/models/MovieDetails';
-import { Cast } from '../shared/models/Cast';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { MovieDetails } from '../../shared/models/MovieDetails';
+import { Cast } from '../../shared/models/Cast';
 
 interface MovieCreditsResponse {
   cast: Cast[];

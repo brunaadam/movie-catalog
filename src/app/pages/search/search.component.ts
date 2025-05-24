@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { MovieService } from '../services/movie.service';
-import { PaginationNavComponent } from '../pagination-nav/pagination-nav.component';
-import { LoaderComponent } from '../loader/loader.component';
-import { Movie } from '../shared/models/Movie';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { MovieService } from '../../services/movie.service';
+import { PaginationNavComponent } from '../../components/pagination-nav/pagination-nav.component';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { Movie } from '../../shared/models/Movie';
 
 interface MovieSearchResponse {
   results: Movie[];

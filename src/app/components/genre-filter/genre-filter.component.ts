@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Genre } from '../shared/models/Genre';
+import { Genre } from '../../shared/models/Genre';
 @Component({
   selector: 'app-genre-filter',
   standalone: true,

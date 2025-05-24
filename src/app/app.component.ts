@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './components/header/header.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { bootstrapChevronLeft, bootstrapChevronRight, bootstrapStarFill, bootstrapStar, bootstrapStarHalf, bootstrapClock } from '@ng-icons/bootstrap-icons';
 
